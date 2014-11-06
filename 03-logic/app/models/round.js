@@ -6,7 +6,7 @@ DutyTwist.Round = Ember.Object.extend({
     var self = this;
     return this.get("schedule.people").map(function(person, i) {
       return DutyTwist.Assignment.create({
-        duty: schedule.dutyAt(self.get("number"), i),
+        duty: self.get("schedule").dutyAt(self.get("number"), i),
         person: person
       });
     });
