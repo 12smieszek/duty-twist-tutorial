@@ -37,7 +37,7 @@
 
     <script type="text/x-handlebars" data-template-name="assignment">
       <nav class="assignment-nav">
-        {{#link-to "assignment" id round.previousNumber classNames="grey button icon-only"}}
+        {{#link-to "assignment" person.id round.previousNumber classNames="grey button icon-only"}}
           <i class="previous icon">Previous</i>
         {{/link-to}}
         {{#link-to "schedule" classNames="grey button icon-only"}}
@@ -52,7 +52,7 @@
           –
           {{format-date round.endsOn}}
         </span>
-        {{#link-to "assignment" id round.nextNumber classNames="grey button icon-only last"}}
+        {{#link-to "assignment" person.id round.nextNumber classNames="grey button icon-only last"}}
           <i class="next icon">Next</i>
         {{/link-to}}
       </nav>
