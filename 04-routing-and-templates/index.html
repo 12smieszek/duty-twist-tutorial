@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>DutyTwist</title>
+    <link href="styles/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="styles/all.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/x-handlebars" data-template-name="schedule">
+      <div class="wrapper">
+        {{outlet}}
+      </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="schedule/index">
+      <table class="schedule">
+        <thead>
+          <tr>
+            <td></td>
+            {{#each person in people}}
+              <th>{{#link-to "assignment" person.id 0 classNames="button"}}{{person.name}}{{/link-to}}</th>
+            {{/each}}
+          </tr>
+        </thead>
+        <tbody>
+          {{#each round in rounds}}
+            <tr {{bind-attr class="round.isCurrent:current"}}>
+              <th>{{format-date round.startsOn}}</th>
+              {{#each assignment in round.assignments}}
+                <td>{{#link-to "assignment" assignment.person.id round.number}}<img {{bind-attr src="assignment.duty.iconUrl"}} />{{/link-to}}</td>
+              {{/each}}
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="assignment">
+      <nav class="assignment-nav">
+        {{#link-to "assignment" id round.previousNumber classNames="grey button icon-only"}}
+          <i class="previous icon">Previous</i>
+        {{/link-to}}
+        {{#link-to "schedule" classNames="grey button icon-only"}}
+          <i class="index icon">Index</i>
+        {{/link-to}}
+
+        <span class="text">
+          <strong>
+            {{person.name}}:
+          </strong>
+          {{format-date round.startsOn}}
+          –
+          {{format-date round.endsOn}}
+        </span>
+        {{#link-to "assignment" id round.nextNumber classNames="grey button icon-only last"}}
+          <i class="next icon">Next</i>
+        {{/link-to}}
+      </nav>
+      <div class="assignment-image">
+        <img {{bind-attr src="duty.imageUrl"}} {{bind-attr alt="duty.name"}} />
+      </div>
+      <h1 class="assignment-name">{{duty.name}}</h1>
+    </script>
+  </head>
+  <body>
+
+    <script src="vendor/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="vendor/handlebars-v1.3.0.js" type="text/javascript"></script>
+    <script src="vendor/moment.js" type="text/javascript"></script>
+    <script src="vendor/ember.prod.js" type="text/javascript"></script>
+
+    <script src="app/app.js" type="text/javascript"></script>
+    <script src="app/router.js" type="text/javascript"></script>
+    <script src="app/controllers/schedule_index_controller.js" type="text/javascript"></script>
+    <script src="app/helpers/format_date.js" type="text/javascript"></script>
+    <script src="app/models/assignment.js" type="text/javascript"></script>
+    <script src="app/models/duty.js" type="text/javascript"></script>
+    <script src="app/models/person.js" type="text/javascript"></script>
+    <script src="app/models/round.js" type="text/javascript"></script>
+    <script src="app/models/schedule.js" type="text/javascript"></script>
+    <script src="app/routes/assignment_route.js" type="text/javascript"></script>
+    <script src="app/routes/schedule_route.js" type="text/javascript"></script>
+  </body>
+</html>
