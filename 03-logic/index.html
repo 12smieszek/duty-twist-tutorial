@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>DutyTwist</title>
+    <link href="styles/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="styles/all.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/x-handlebars" data-template-name="schedule">
+      <div class="wrapper">
+        <table class="schedule">
+          <thead>
+            <tr>
+              <td></td>
+              <th>{{#link-to "person" "jas" classNames="button"}}Jaś{{/link-to}}</th>
+              <th>{{#link-to "person" "jas" classNames="button"}}Kasia{{/link-to}}</th>
+              <th>{{#link-to "person" "jas" classNames="button"}}Wojtuś{{/link-to}}</th>
+              <th>{{#link-to "person" "jas" classNames="button"}}Izka{{/link-to}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>17 Lis</th>
+              <td>{{#link-to "person" "jas"}}<img src="images/duties/bathroom-icon.png" />{{/link-to}}</td>
+              <td>{{#link-to "person" "jas"}}<img src="images/duties/bathroom-icon.png" />{{/link-to}}</td>
+              <td>{{#link-to "person" "jas"}}<img src="images/duties/bathroom-icon.png" />{{/link-to}}</td>
+              <td>{{#link-to "person" "jas"}}<img src="images/duties/bathroom-icon.png" />{{/link-to}}</td>
+            </tr>
+            <tr class="current">
+              <th>24 Lis</th>
+              <td>{{#link-to "person" "jas"}}<img src="images/duties/bathroom-icon.png" />{{/link-to}}</td>
+              <td>{{#link-to "person" "jas"}}<img src="images/duties/bathroom-icon.png" />{{/link-to}}</td>
+              <td>{{#link-to "person" "jas"}}<img src="images/duties/bathroom-icon.png" />{{/link-to}}</td>
+              <td>{{#link-to "person" "jas"}}<img src="images/duties/bathroom-icon.png" />{{/link-to}}</td>
+            </tr>
+            <tr>
+              <th>1 Gru</th>
+              <td>{{#link-to "person" "jas"}}<img src="images/duties/bathroom-icon.png" />{{/link-to}}</td>
+              <td>{{#link-to "person" "jas"}}<img src="images/duties/bathroom-icon.png" />{{/link-to}}</td>
+              <td>{{#link-to "person" "jas"}}<img src="images/duties/bathroom-icon.png" />{{/link-to}}</td>
+              <td>{{#link-to "person" "jas"}}<img src="images/duties/bathroom-icon.png" />{{/link-to}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="person">
+      <div class="wrapper">
+        <nav class="assignment-nav">
+          {{#link-to "person" "jas" classNames="grey button icon-only"}}
+            <i class="previous icon">Previous</i>
+          {{/link-to}}
+          {{#link-to "schedule" classNames="grey button icon-only"}}
+            <i class="index icon">Index</i>
+          {{/link-to}}
+
+          <span class="text">
+            <strong>
+              Jaś:
+            </strong>
+            24 Lis
+            –
+            30 Lis
+          </span>
+
+          {{#link-to "person" "jas" classNames="grey button icon-only last"}}
+            <i class="next icon">Next</i>
+          {{/link-to}}
+        </nav>
+        <div class="assignment-image">
+          <img src="images/duties/bathroom.jpg" alt="Łazienka" />
+        </div>
+        <h1 class="assignment-name">Łazienka</h1>
+      </div>
+    </script>
+  </head>
+  <body>
+
+    <script src="vendor/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="vendor/handlebars-v1.3.0.js" type="text/javascript"></script>
+    <script src="vendor/ember.prod.js" type="text/javascript"></script>
+
+    <script src="app/app.js" type="text/javascript"></script>
+    <script src="app/router.js" type="text/javascript"></script>
+    <script src="app/models/assignment.js" type="text/javascript"></script>
+    <script src="app/models/duty.js" type="text/javascript"></script>
+    <script src="app/models/person.js" type="text/javascript"></script>
+    <script src="app/models/round.js" type="text/javascript"></script>
+    <script src="app/models/schedule.js" type="text/javascript"></script>
+  </body>
+</html>
